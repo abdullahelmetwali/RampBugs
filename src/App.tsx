@@ -3,7 +3,7 @@ import { InputSelect } from "./components/InputSelect"
 import { Instructions } from "./components/Instructions"
 import { Transactions } from "./components/Transactions"
 import { useEmployees } from "./hooks/useEmployees"
-import { usePaginatedTransactions } from "./hooks/usePaginatedTransactions"
+import { usePaginatedTransactions, viewMoreState } from "./hooks/usePaginatedTransactions"
 import { useTransactionsByEmployee } from "./hooks/useTransactionsByEmployee"
 import { EMPTY_EMPLOYEE } from "./utils/constants"
 import { Employee } from "./utils/types"
@@ -64,7 +64,9 @@ export function App() {
             if (newValue === null) {
               return
             }
-
+            if (newValue.id === '') {
+              return loadAllTransactions()
+            }
             await loadTransactionsByEmployee(newValue.id)
           }}
         />
@@ -76,7 +78,7 @@ export function App() {
 
           {transactions !== null && (
             <button
-              className="RampButton"
+              className={`RampButton ${viewMoreState ? 'RampInputCheckbox--input' : ''} `}
               disabled={paginatedTransactionsUtils.loading}
               onClick={async () => {
                 await loadAllTransactions()
@@ -90,3 +92,4 @@ export function App() {
     </Fragment>
   )
 }
+// ${ viewMoreState ? 'RampInputCheckbox--input' : '' } 

@@ -69,7 +69,7 @@ We don't have a real API for this challenge, so we added some utilities to simul
 ---
 
 # Bug 1: Select dropdown doesn't scroll with rest of the page
-
+// position : relative and deleting getDropDownfunc
 **How to reproduce:**
 
 1. Make your viewport smaller in height. Small enough to have a scroll bar
@@ -81,7 +81,7 @@ We don't have a real API for this challenge, so we added some utilities to simul
 **Actual:** Options dropdown stays in the same position as you scroll the page, losing the reference to the select input
 
 # Bug 2: Approve checkbox not working
-
+// htmlFor={inputId} at label (InputCheckbox ~ index.ts)
 **How to reproduce:**
 
 1. Click on the checkbox on the right of any transaction
@@ -91,7 +91,7 @@ We don't have a real API for this challenge, so we added some utilities to simul
 **Actual:** Nothing happens
 
 # Bug 3: Cannot select _All Employees_ after selecting an employee
-
+// adding if (newValue.id === ""){return loadAllTransactions()} (App.tsx)
 **How to reproduce:**
 
 1. Click on the **Filter by employee** select to open the options dropdown
@@ -104,7 +104,7 @@ We don't have a real API for this challenge, so we added some utilities to simul
 **Actual:** The page crashes
 
 # Bug 4: Clicking on View More button not showing correct data
-
+// export let viewMoreState (usePaginatedTrans.ts)
 **How to reproduce:**
 
 1. Click on the **View more** button
